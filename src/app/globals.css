@@ -12,3 +12,6 @@ body {
   display: flex;
   flex-direction: column;
 }
+.footercolor{
+  background-color: #6082B6;
+}

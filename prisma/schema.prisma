@@ -11,7 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   // for local development
-  url      = env("DATABASE_URL")
+  url      = "verceldb"
   // for Vercel
   // url       = "postgres://default:***@***/verceldb?pgbouncer=true&connect_timeout=15&sslmode=require"
   // directUrl = "postgres://default:***@***/verceldb?sslmode=require"

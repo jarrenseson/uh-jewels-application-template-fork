@@ -5,14 +5,9 @@ const Footer = () => (
   <footer className="mt-auto py-3 footercolor">
     <Container>
       <Col className="text-center">
-        Department of Information and Computer Sciences
-        <br />
-        University of Hawaii
-        <br />
-        Honolulu, HI 96822
-        <br />
-        <a href="http://ics-software-engineering.github.io/nextjs-application-template">Template Home Page</a>
+        Created by Katelyn Sung, Waltz Axl Tuzon, and Jarren Seson
       </Col>
+      <p>2024 UH Jewels</p>
     </Container>
   </footer>
 );

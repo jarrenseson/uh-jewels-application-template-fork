@@ -26,6 +26,7 @@ const OurProductsPage = () => (
           <h2>Our Products</h2>
         </Col>
         <h2>Necklaces</h2>
+        <h2>Bracelets</h2>
       </Col>
     </Row>
   </Container>

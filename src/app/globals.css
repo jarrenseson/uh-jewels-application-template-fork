@@ -26,27 +26,51 @@ body {
   background-position: center;
 }
 
-#container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  
-  /* Set a max-width to limit the container's width at larger screen sizes */
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
-  @media (min-width: 1400px) {
-    max-width: 1320px;
-  }
+#background {
+  height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}
+
+.main-title {
+  font-size: 48px;
+  margin: 0;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 32px;
+  margin: 8px 0 0;
+  font-weight: normal;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.shop-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid white;
+  border-radius: 0px;
+  background-color: transparent;
+  text-align: center;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.shop-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

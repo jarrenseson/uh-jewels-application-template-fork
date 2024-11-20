@@ -13,7 +13,16 @@ const products = [
   { id: 3, name: 'Drop Bracelet', description: 'A italian style adjustable sterling silver bracelet with a keiki abalone.', price: '$30', image: '/bracelet.png' },
 ];
 
-const ProductCard = ({ product }) => (
+// eslint-disable-next-line react/prop-types
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+}
+
+const ProductCard = ({ product }: { product: Product }) => (
   <Col md={4} className="mb-4">
     <Card>
       <Card.Img variant="top" src={product.image} alt={product.name} />

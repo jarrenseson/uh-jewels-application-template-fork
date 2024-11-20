@@ -43,3 +43,12 @@ model Stuff {
   condition Condition
   owner     String
 }
+
+model ShippingInfo{
+  id Int @id @default(autoincrement())
+  streetAdress String
+  city String
+  postal String
+  state String
+  country String
+}

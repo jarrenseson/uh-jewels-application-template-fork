@@ -4,8 +4,8 @@
 
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import { Button, Col, Container, Form, Image, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
+import { BoxArrowRight, Cart, Instagram, Lock, PersonFill, PersonPlusFill, Search } from 'react-bootstrap-icons';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -14,12 +14,24 @@ const NavBar: React.FC = () => {
   const role = userWithRole?.randomKey;
   const pathName = usePathname();
   return (
-    <Navbar className="footercolor" expand="lg">
+    <Navbar
+      className="footercolor navbar-color navbar-size"
+      data-bs-theme="light"
+      expand="lg"
+    >
       <Container>
-        <Navbar.Brand href="/">Next.js Application Template</Navbar.Brand>
+        <Navbar.Brand className="custom-center navbar-logo" href="/"><Image src="Logo.jpg" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto justify-content-start">
+        <a
+          className="navlink-margin-left nav-link-size social-media-link"
+          href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Instagram />
+        </a>
+          <Nav className="me-auto justify-content-start nav-link-size">
             {currentUser
               ? [
                   <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
@@ -63,6 +75,29 @@ const NavBar: React.FC = () => {
               </NavDropdown>
             )}
           </Nav>
+          <Form>
+            <Row className="g-0">
+              <Col xs="auto" className="p-0">
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  className="m-0"
+                />
+              </Col>
+              <Col xs="auto" className="p-0">
+                <Button
+                  className="navlink-margin-left nav-link-size m-0"
+                  variant="khaki"
+                  type="submit"
+                >
+                      <Search />
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+          <Nav.Link className="navlink-margin-left nav-link-size">
+            <Cart href="/" />
+          </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

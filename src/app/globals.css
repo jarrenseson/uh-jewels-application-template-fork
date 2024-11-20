@@ -32,21 +32,36 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  
-  /* Set a max-width to limit the container's width at larger screen sizes */
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
-  @media (min-width: 1400px) {
-    max-width: 1320px;
-  }
+}
+
+.navbar-color {
+  background-color: #d5cbbf;
+}
+
+.navbar-size {
+  height: 125px;
+}
+
+.navbar-logo{
+  height: 65px;
+}
+
+.navlink-margin-left{
+  margin-left: 10px;
+}
+
+.custom-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link-size svg {
+  font-size: 1.7rem; 
+}
+
+.social-media-link {
+  color: black;
 }

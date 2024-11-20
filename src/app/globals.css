@@ -15,6 +15,10 @@ body {
 .footercolor{
   background-color: #6082B6;
 }
+.logosize{
+  width: 100px;
+  height: 100px;
+}
 
 #background {
   flex-grow: 1; /* Make sure it expands to fill the parent */
@@ -32,6 +36,58 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+=======
+#background {
+  height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}
+
+.main-title {
+  font-size: 48px;
+  margin: 0;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 32px;
+  margin: 8px 0 0;
+  font-weight: normal;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.shop-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid white;
+  border-radius: 0px;
+  background-color: transparent;
+  text-align: center;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.shop-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.f1{
+  font-family: 'Papyrus', Verdana;
 }
 
 .navbar-color {

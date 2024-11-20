@@ -21,6 +21,9 @@ const NavBar: React.FC = () => {
     >
       <Container>
         <Navbar.Brand className="custom-center navbar-logo" href="/"><Image src="Logo.jpg" /></Navbar.Brand>
+    <Navbar className="footercolor justify-content-center" expand="lg">
+      <Container>
+        <Navbar.Brand />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
         <a

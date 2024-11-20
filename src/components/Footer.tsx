@@ -1,13 +1,19 @@
-import { Col, Container } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-/** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
   <footer className="mt-auto py-3 footercolor">
     <Container>
-      <Col className="text-center">
-        Created by Katelyn Sung, Waltz Axl Tuzon, and Jarren Seson
-      </Col>
-      <p>2024 UH Jewels</p>
+      <Row className="text-center">
+        <Col>
+          <p style={{ fontSize: '12px' }}>Thank you for supporting local</p>
+        </Col>
+      </Row>
+      <Row className="text-center">
+        <Col>
+          <p style={{ fontSize: '10px' }}>Created by Katelyn Sung, Waltz Axl Tuzon, and Jarren Seson</p>
+        </Col>
+      </Row>
     </Container>
   </footer>
 );

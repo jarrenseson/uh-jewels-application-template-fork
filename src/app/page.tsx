@@ -37,7 +37,7 @@ const Home = () => (
           </h2>
         </div>
         <a
-          href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-image"
+          href="/OurProductsPage"
           style={{
             display: 'inline-block',
             padding: '12px 24px',

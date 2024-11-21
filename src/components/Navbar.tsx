@@ -1,11 +1,27 @@
-/* eslint-disable react/jsx-indent, @typescript-eslint/indent */
-
 'use client';
 
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { Button, Col, Container, Form, Image, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
-import { BoxArrowRight, Cart, Instagram, Lock, PersonFill, PersonPlusFill, Search } from 'react-bootstrap-icons';
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  Image,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Row,
+} from 'react-bootstrap';
+import {
+  BoxArrowRight,
+  Cart,
+  Instagram,
+  Lock,
+  PersonFill,
+  PersonPlusFill,
+  Search,
+} from 'react-bootstrap-icons';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -13,6 +29,7 @@ const NavBar: React.FC = () => {
   const userWithRole = session?.user as { email: string; randomKey: string };
   const role = userWithRole?.randomKey;
   const pathName = usePathname();
+
   return (
     <Navbar
       className="footercolor navbar-color navbar-size"
@@ -20,47 +37,62 @@ const NavBar: React.FC = () => {
       expand="lg"
     >
       <Container>
-        <Navbar.Brand className="custom-center navbar-logo" href="/"><Image src="Logo.jpg" /></Navbar.Brand>
-    <Navbar className="footercolor justify-content-center" expand="lg">
-      <Container>
-        <Navbar.Brand />
+        <Navbar.Brand className="custom-center navbar-logo" href="/">
+          <Image src="Logo.jpg" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-        <a
-          className="navlink-margin-left nav-link-size social-media-link"
-          href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Instagram />
-        </a>
+          <a
+            className="navlink-margin-left nav-link-size social-media-link"
+            href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram />
+          </a>
           <Nav className="me-auto justify-content-start nav-link-size">
-            {currentUser
-              ? [
-                  <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
-                    Add Stuff
-                  </Nav.Link>,
-                  <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
-                    List Stuff
-                  </Nav.Link>,
-                ]
-              : ''}
-            {currentUser && role === 'ADMIN' ? (
-              <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
+            {currentUser && (
+              <>
+                <Nav.Link
+                  id="add-stuff-nav"
+                  href="/add"
+                  active={pathName === '/add'}
+                >
+                  Add Stuff
+                </Nav.Link>
+                <Nav.Link
+                  id="list-stuff-nav"
+                  href="/list"
+                  active={pathName === '/list'}
+                >
+                  List Stuff
+                </Nav.Link>
+              </>
+            )}
+            {currentUser && role === 'ADMIN' && (
+              <Nav.Link
+                id="admin-stuff-nav"
+                href="/admin"
+                active={pathName === '/admin'}
+              >
                 Admin
               </Nav.Link>
-            ) : (
-              ''
             )}
           </Nav>
           <Nav>
             {session ? (
               <NavDropdown id="login-dropdown" title={currentUser}>
-                <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">
+                <NavDropdown.Item
+                  id="login-dropdown-sign-out"
+                  href="/api/auth/signout"
+                >
                   <BoxArrowRight />
                   Sign Out
                 </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-change-password" href="/auth/change-password">
+                <NavDropdown.Item
+                  id="login-dropdown-change-password"
+                  href="/auth/change-password"
+                >
                   <Lock />
                   Change Password
                 </NavDropdown.Item>
@@ -93,13 +125,13 @@ const NavBar: React.FC = () => {
                   variant="khaki"
                   type="submit"
                 >
-                      <Search />
+                  <Search />
                 </Button>
               </Col>
             </Row>
           </Form>
-          <Nav.Link className="navlink-margin-left nav-link-size">
-            <Cart href="/" />
+          <Nav.Link className="navlink-margin-left nav-link-size" href="/">
+            <Cart />
           </Nav.Link>
         </Navbar.Collapse>
       </Container>

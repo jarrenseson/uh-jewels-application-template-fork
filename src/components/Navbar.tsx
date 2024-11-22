@@ -130,7 +130,11 @@ const NavBar: React.FC = () => {
               </Col>
             </Row>
           </Form>
-          <Nav.Link className="navlink-margin-left nav-link-size" href="/">
+          <Nav.Link
+            className="navlink-margin-left nav-link-size"
+            href="/cart"
+            active={pathName === '/cart'}
+          >
             <Cart />
           </Nav.Link>
         </Navbar.Collapse>

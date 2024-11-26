@@ -11,10 +11,10 @@ generator client {
 datasource db {
   provider = "postgresql"
   // for local development
-  url      = "verceldb"
+  url      = "postgres://neondb_owner:UkiSCtnO93Vw@ep-jolly-resonance-a69myup6-pooler.us-west-2.aws.neon.tech/neondb?sslmode=require"
   // for Vercel
-  // url       = "postgres://default:***@***/verceldb?pgbouncer=true&connect_timeout=15&sslmode=require"
-  // directUrl = "postgres://default:***@***/verceldb?sslmode=require"
+  // url       = "postgres://neondb_owner:UkiSCtnO93Vw@ep-jolly-resonance-a69myup6-pooler.us-west-2.aws.neon.tech/neondb?sslmode=require&pgbouncer=true&connect_timeout=15"
+  // directUrl = "postgresql://neondb_owner:UkiSCtnO93Vw@ep-jolly-resonance-a69myup6.us-west-2.aws.neon.tech/neondb?sslmode=require"
 }
 
 enum Role {
@@ -34,12 +34,4 @@ enum Condition {
   good
   fair
   poor
-}
-
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition
-  owner     String
 }

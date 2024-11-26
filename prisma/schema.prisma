@@ -35,3 +35,13 @@ enum Condition {
   fair
   poor
 }
+
+model ShippingInfo {
+  id Int @id @default(autoincrement())
+  address1 String
+  address2 String
+  city String
+  zip String
+  state String
+  country String
+}

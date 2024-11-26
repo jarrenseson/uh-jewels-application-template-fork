@@ -15,14 +15,16 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Stuff" (
+CREATE TABLE "ShippingInfo" (
     "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "quantity" INTEGER NOT NULL,
-    "condition" "Condition" NOT NULL,
-    "owner" TEXT NOT NULL,
+    "address1" TEXT NOT NULL,
+    "address2" TEXT NOT NULL,
+    "city" TEXT NOT NULL,
+    "zip" TEXT NOT NULL,
+    "state" TEXT NOT NULL,
+    "country" TEXT NOT NULL,
 
-    CONSTRAINT "Stuff_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ShippingInfo_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

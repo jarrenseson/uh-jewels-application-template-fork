@@ -1,6 +1,7 @@
 'use client';
 
-import CartPage from '@/components/CartPage';
+import ShoppingCartPage from '@/components/ShoppingCartPage';
+// import PaymentPage from '@/components/PaymentPage';
 
 /*
 import { getServerSession } from 'next-auth';
@@ -10,7 +11,8 @@ import { loggedInProtectedPage } from '@/lib/page-protection';
 
 const Cart = () => (
   <main>
-    <CartPage />
+    <ShoppingCartPage />
+    {/* <PaymentPage /> */}
   </main>
 );
 

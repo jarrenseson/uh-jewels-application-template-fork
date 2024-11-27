@@ -1,6 +1,6 @@
 'use server';
 
-import { Stuff, Condition } from '@prisma/client';
+import { Stuff, Condition, ShippingInfo } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
@@ -9,6 +9,28 @@ import { prisma } from './prisma';
  * Adds a new stuff to the database.
  * @param stuff, an object with the following properties: name, quantity, owner, condition.
  */
+
+
+/**
+ * Adds a new ShippingInfo to the database.
+ * @param shippingInfo, shipping information
+ */
+export asnyc function addShippingInfo(shippingInfo: { firstName: string; lastName: string; address1: string; address2: string; city: string; zip: string; state: string; country: string }) {
+  await prisma.shippingInfo.create({
+    data: {
+      firstName: shippingInfo.firstName,
+      lastName: shippingInfo.lastName,
+      address1: shippingInfo.address1,
+      address2: shippingInfo.address2,
+      city: shippingInfo.city,
+      zip: shippingInfo.zip,
+      state: shippingInfo.state,
+      country: shippingInfo.country,
+    },
+  });
+  redirect('/');
+}
+
 export async function addStuff(stuff: { name: string; quantity: number; owner: string; condition: string }) {
   // console.log(`addStuff data: ${JSON.stringify(stuff, null, 2)}`);
   let condition: Condition = 'good';

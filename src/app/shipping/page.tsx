@@ -1,7 +1,19 @@
-import ShippingForm from '@/components/ShippingForm';
+import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/authOptions';
+import { loggedInProtectedPage } from '@/lib/page-protection';
+import AddShippingInfoForm from '@/components/AddShippingInfoForm';
 
-const Shipping = () => (
-  <ShippingForm />
-);
+const AddShippingInfo = async () => {
+  // Protect the page, only logged in users can access it.
+  const session = await getServerSession(authOptions);
+  loggedInProtectedPage(
+    session as {
+      user: { email: string; id: string; randomKey: string };
+    } | null,
+  );
+  return (
+    <AddShippingInfoForm />
+  );
+};
 
-export default Shipping;
+export default AddShippingInfo;

@@ -1,4 +1,4 @@
-import { getServerSession } from 'next-auth';
+/* import { getServerSession } from 'next-auth';
 import { notFound } from 'next/navigation';
 import { Stuff } from '@prisma/client';
 import authOptions from '@/lib/authOptions';
@@ -31,3 +31,4 @@ export default async function EditStuffPage({ params }: { params: { id: string |
     </main>
   );
 }
+*/

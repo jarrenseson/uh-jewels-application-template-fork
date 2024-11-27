@@ -1,7 +1,8 @@
-import ShippingForm from '@/components/ShippingForm';
+import AddShippingInfoForm from '@/components/AddShippingInfoForm';
 
-const Shipping = () => (
-  <ShippingForm />
+const AddShippingInfo = async () => (
+  // Protect the page, only logged in users can access it.
+  <AddShippingInfoForm />
 );
 
-export default Shipping;
+export default AddShippingInfo;

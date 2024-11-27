@@ -44,7 +44,6 @@ const AddShippingInfoForm: React.FC = () => {
   if (status === 'unauthenticated') {
     redirect('/auth/signin');
   }
-
   return (
     <Container className="py-3">
       <Row className="justify-content-center">

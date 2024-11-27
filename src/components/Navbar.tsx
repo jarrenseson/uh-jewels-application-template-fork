@@ -62,10 +62,10 @@ const NavBar: React.FC = () => {
                 </Nav.Link>
                 <Nav.Link
                   id="list-stuff-nav"
-                  href="/list"
+                  href="/shipping"
                   active={pathName === '/list'}
                 >
-                  List Stuff
+                  Shipping
                 </Nav.Link>
               </>
             )}

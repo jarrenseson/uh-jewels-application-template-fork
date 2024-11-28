@@ -1,4 +1,4 @@
-/* 'use client';
+'use client';
 
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -98,4 +98,3 @@ const EditStuffForm = ({ stuff }: { stuff: Stuff }) => {
 };
 
 export default EditStuffForm;
-*/

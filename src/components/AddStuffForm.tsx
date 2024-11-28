@@ -1,4 +1,4 @@
-/* 'use client';
+'use client';
 
 import { useSession } from 'next-auth/react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
@@ -100,4 +100,3 @@ const AddStuffForm: React.FC = () => {
 };
 
 export default AddStuffForm;
-*/

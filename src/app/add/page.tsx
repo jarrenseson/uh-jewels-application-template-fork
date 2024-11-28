@@ -1,4 +1,4 @@
-/* import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import AddStuffForm from '@/components/AddStuffForm';
@@ -19,4 +19,3 @@ const AddStuff = async () => {
 };
 
 export default AddStuff;
-*/

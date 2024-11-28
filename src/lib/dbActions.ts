@@ -1,6 +1,6 @@
 'use server';
 
-/* import { Stuff, Condition } from '@prisma/client'; */
+import { Stuff, Condition } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
@@ -39,7 +39,6 @@ export async function addShippingInfo(shippingInfo: {
  * @param stuff, an object with the following properties: name, quantity, owner, condition.
  */
 
-/*
 export async function addStuff(stuff: { name: string; quantity: number; owner: string; condition: string }) {
   // console.log(`addStuff data: ${JSON.stringify(stuff, null, 2)}`);
   let condition: Condition = 'good';
@@ -61,13 +60,12 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
   // After adding, redirect to the list page
   redirect('/list');
 }
-  */
 
 /**
  * Edits an existing stuff in the database.
  * @param stuff, an object with the following properties: id, name, quantity, owner, condition.
  */
-/*
+
 export async function editStuff(stuff: Stuff) {
   // console.log(`editStuff data: ${JSON.stringify(stuff, null, 2)}`);
   await prisma.stuff.update({
@@ -82,13 +80,12 @@ export async function editStuff(stuff: Stuff) {
   // After updating, redirect to the list page
   redirect('/list');
 }
-  */
 
 /**
  * Deletes an existing stuff from the database.
  * @param id, the id of the stuff to delete.
  */
-/*
+
 export async function deleteStuff(id: number) {
   // console.log(`deleteStuff id: ${id}`);
   await prisma.stuff.delete({
@@ -97,7 +94,6 @@ export async function deleteStuff(id: number) {
   // After deleting, redirect to the list page
   redirect('/list');
 }
-  */
 
 /**
  * Creates a new user in the database.

@@ -1,4 +1,4 @@
-/* import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import StuffItemAdmin from '@/components/StuffItemAdmin';
 import { prisma } from '@/lib/prisma';
@@ -66,4 +66,3 @@ const AdminPage = async () => {
 };
 
 export default AdminPage;
-*/

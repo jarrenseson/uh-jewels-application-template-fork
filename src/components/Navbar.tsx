@@ -42,31 +42,37 @@ const NavBar: React.FC = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <a
-            className="navlink-margin-left nav-link-size social-media-link"
-            href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram />
-          </a>
           <Nav className="me-auto justify-content-start nav-link-size">
             {currentUser && (
               <>
-                <Nav.Link
-                  id="add-stuff-nav"
-                  href="/add"
-                  active={pathName === '/add'}
+                <a
+                  className="navlink-margin-left nav-link-size social-media-link"
+                  href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Add Stuff
-                </Nav.Link>
-                <Nav.Link
-                  id="list-stuff-nav"
-                  href="/shipping"
-                  active={pathName === '/list'}
-                >
-                  Shipping
-                </Nav.Link>
+                  <Instagram />
+                </a>
+                <Form>
+                  <Row className="g-0">
+                    <Col xs="auto" className="p-0">
+                      <Form.Control
+                        type="text"
+                        placeholder="Search"
+                        className="m-0 mx-4"
+                      />
+                    </Col>
+                    <Col xs="auto" className="p-0">
+                      <Button
+                        className="navlink-margin-left nav-link-size mx-3"
+                        variant="khaki"
+                        type="submit"
+                      >
+                        <Search />
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
               </>
             )}
             {currentUser && role === 'ADMIN' && (
@@ -81,22 +87,39 @@ const NavBar: React.FC = () => {
           </Nav>
           <Nav>
             {session ? (
-              <NavDropdown id="login-dropdown" title={currentUser}>
-                <NavDropdown.Item
-                  id="login-dropdown-sign-out"
-                  href="/api/auth/signout"
+              <>
+                <NavDropdown id="login-dropdown" title={currentUser}>
+                  <NavDropdown.Item
+                    id="login-dropdown-sign-out"
+                    href="/api/auth/signout"
+                  >
+                    <BoxArrowRight />
+                    Sign Out
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    id="login-dropdown-change-password"
+                    href="/auth/change-password"
+                  >
+                    <Lock />
+                    Change Password
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link
+                  className="navlink-margin-left nav-link-size m-0 mx-3 px-0"
+                  href="/cart"
+                  active={pathName === '/cart'}
                 >
-                  <BoxArrowRight />
-                  Sign Out
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  id="login-dropdown-change-password"
-                  href="/auth/change-password"
+                  <Cart />
+                </Nav.Link>
+                <Nav.Link
+                  className="shipping-link-text"
+                  id="list-stuff-nav"
+                  href="/shipping"
+                  active={pathName === '/list'}
                 >
-                  <Lock />
-                  Change Password
-                </NavDropdown.Item>
-              </NavDropdown>
+                  Shipping
+                </Nav.Link>
+              </>
             ) : (
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" href="/auth/signin">
@@ -110,33 +133,6 @@ const NavBar: React.FC = () => {
               </NavDropdown>
             )}
           </Nav>
-          <Form>
-            <Row className="g-0">
-              <Col xs="auto" className="p-0">
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  className="m-0"
-                />
-              </Col>
-              <Col xs="auto" className="p-0">
-                <Button
-                  className="navlink-margin-left nav-link-size m-0"
-                  variant="khaki"
-                  type="submit"
-                >
-                  <Search />
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-          <Nav.Link
-            className="navlink-margin-left nav-link-size"
-            href="/cart"
-            active={pathName === '/cart'}
-          >
-            <Cart />
-          </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

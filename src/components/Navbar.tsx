@@ -115,14 +115,6 @@ const NavBar: React.FC = () => {
                 >
                   <Cart />
                 </Nav.Link>
-                <Nav.Link
-                  className="shipping-link-text"
-                  id="list-stuff-nav"
-                  href="/shipping"
-                  active={pathName === '/list'}
-                >
-                  Shipping
-                </Nav.Link>
               </>
             ) : (
               <NavDropdown id="login-dropdown" title="Login">

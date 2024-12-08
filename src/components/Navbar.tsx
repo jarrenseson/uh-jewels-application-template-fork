@@ -43,47 +43,33 @@ const NavBar: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start nav-link-size">
-            {currentUser
-              ? [
-                <>
-                  <a
-                    className="navlink-margin-left nav-link-size social-media-link"
-                    href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Instagram />
-                  </a>
-                  <Form>
-                    <Row className="g-0">
-                      <Col xs="auto" className="p-0">
-                        <Form.Control
-                          type="text"
-                          placeholder="Search"
-                          className="m-0 mx-4"
-                        />
-                      </Col>
-                      <Col xs="auto" className="p-0">
-                        <Button
-                          className="navlink-margin-left nav-link-size mx-3"
-                          variant="khaki"
-                          type="submit"
-                        >
-                          <Search />
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </>,
-              ]
-              : ''}
-            {currentUser && role === 'ADMIN' ? (
+            {currentUser && (
+              <>
+                <a
+                  className="navlink-margin-left nav-link-size social-media-link"
+                  href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram />
+                </a>
+                <Nav.Link
+                  id="add-stuff-nav"
+                  href="/productspage"
+                  active={pathName === '/productspage'}
+                >
+                  Shop Jewels
+                </Nav.Link>
+              </>
+            )}
+            {role === 'ADMIN' && (
+
               <Nav.Link
                 id="admin-stuff-nav"
                 href="/admin"
                 active={pathName === '/admin'}
               >
-                Admin
+                List New Products
               </Nav.Link>
             ) : (
               ''

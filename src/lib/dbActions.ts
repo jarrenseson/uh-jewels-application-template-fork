@@ -34,6 +34,25 @@ export async function addShippingInfo(shippingInfo: {
   redirect('/');
 }
 
+export async function addJewels(jewels: {
+  owner: string;
+  name: string,
+  price: number,
+  image: string,
+  description: string,
+}) {
+  await prisma.jewels.create({
+    data: {
+      name: jewels.name,
+      price: jewels.price,
+      image: jewels.image,
+      description: jewels.description,
+      owner: jewels.owner,
+    },
+  });
+  redirect('/productspage');
+}
+
 /**
  * Adds a new stuff to the database.
  * @param stuff, an object with the following properties: name, quantity, owner, condition.
@@ -58,7 +77,7 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
     },
   });
   // After adding, redirect to the list page
-  redirect('/list');
+  redirect('/productspage');
 }
 
 /**

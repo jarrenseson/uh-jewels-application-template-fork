@@ -1,4 +1,4 @@
-import { PrismaClient, Role /* Condition */ } from '@prisma/client';
+import { PrismaClient, Role } from '@prisma/client';
 import { hash } from 'bcrypt';
 import * as config from '../config/settings.development.json';
 
@@ -22,31 +22,21 @@ async function main() {
         role,
       },
     });
-    // console.log(`  Created user: ${user.email} with role: ${user.role}`);
-  });
-  /*
-  config.defaultData.forEach(async (data, index) => {
-    let condition: Condition = 'good';
-    if (data.condition === 'poor') {
-      condition = 'poor';
-    } else if (data.condition === 'excellent') {
-      condition = 'excellent';
-    } else {
-      condition = 'fair';
-    }
-    console.log(`  Adding stuff: ${data.name} (${data.owner})`);
-    await prisma.stuff.upsert({
-      where: { id: index + 1 },
-      update: {},
-      create: {
-        name: data.name,
-        quantity: data.quantity,
-        owner: data.owner,
-        condition,
-      },
+    config.defaultJewels.forEach(async (jewels, index) => {
+      console.log(`  Adding jewels: ${jewels.name}`);
+      await prisma.jewels.upsert({
+        where: { id: index },
+        update: {},
+        create: {
+          name: jewels.name,
+          price: jewels.price,
+          image: jewels.image,
+          owner: jewels.owner,
+          description: jewels.description,
+        },
+      });
     });
   });
-  */
 }
 main()
   .then(() => prisma.$disconnect())

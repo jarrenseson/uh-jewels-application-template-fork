@@ -55,3 +55,12 @@ model ShippingInfo {
   state String
   country String
 }
+
+model Jewels {
+  id      Int @id @default(autoincrement())
+  name    String
+  price   Int
+  image   String
+  owner   String
+  description String
+}

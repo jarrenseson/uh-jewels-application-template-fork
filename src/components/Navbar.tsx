@@ -60,16 +60,16 @@ const NavBar: React.FC = () => {
                 >
                   Shop Jewels
                 </Nav.Link>
-                <Nav.Link
+                {/* <Nav.Link
                   id="list-stuff-nav"
                   href="/shipping"
                   active={pathName === '/productspage'}
                 >
                   Shipping
-                </Nav.Link>
+                </Nav.Link> */}
               </>
             )}
-            {currentUser && role === 'ADMIN' && (
+            {role === 'ADMIN' && (
               <Nav.Link
                 id="admin-stuff-nav"
                 href="/admin"

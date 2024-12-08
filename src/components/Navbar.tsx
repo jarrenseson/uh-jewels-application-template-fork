@@ -3,6 +3,8 @@
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import {
+  Button,
+  Col,
   Container,
   Form,
   Image,
@@ -18,6 +20,7 @@ import {
   Lock,
   PersonFill,
   PersonPlusFill,
+  Search,
 } from 'react-bootstrap-icons';
 
 const NavBar: React.FC = () => {
@@ -39,17 +42,17 @@ const NavBar: React.FC = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <a
-            className="navlink-margin-left nav-link-size social-media-link"
-            href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram />
-          </a>
           <Nav className="me-auto justify-content-start nav-link-size">
             {currentUser && (
               <>
+                <a
+                  className="navlink-margin-left nav-link-size social-media-link"
+                  href="https://www.instagram.com/universityjewels?igsh=MWZzMW4yeTNwaGZ5ZQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram />
+                </a>
                 <Nav.Link
                   id="add-stuff-nav"
                   href="/productspage"
@@ -57,13 +60,6 @@ const NavBar: React.FC = () => {
                 >
                   Shop Jewels
                 </Nav.Link>
-                {/* <Nav.Link
-                  id="list-stuff-nav"
-                  href="/shipping"
-                  active={pathName === '/productspage'}
-                >
-                  Shipping
-                </Nav.Link> */}
               </>
             )}
             {role === 'ADMIN' && (
@@ -78,22 +74,31 @@ const NavBar: React.FC = () => {
           </Nav>
           <Nav>
             {session ? (
-              <NavDropdown id="login-dropdown" title={currentUser}>
-                <NavDropdown.Item
-                  id="login-dropdown-sign-out"
-                  href="/api/auth/signout"
+              <>
+                <NavDropdown id="login-dropdown" title={currentUser}>
+                  <NavDropdown.Item
+                    id="login-dropdown-sign-out"
+                    href="/api/auth/signout"
+                  >
+                    <BoxArrowRight />
+                    Sign Out
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    id="login-dropdown-change-password"
+                    href="/auth/change-password"
+                  >
+                    <Lock />
+                    Change Password
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link
+                  className="navlink-margin-left nav-link-size m-0 mx-3 px-0"
+                  href="/cart"
+                  active={pathName === '/cart'}
                 >
-                  <BoxArrowRight />
-                  Sign Out
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  id="login-dropdown-change-password"
-                  href="/auth/change-password"
-                >
-                  <Lock />
-                  Change Password
-                </NavDropdown.Item>
-              </NavDropdown>
+                  <Cart />
+                </Nav.Link>
+              </>
             ) : (
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" href="/auth/signin">
@@ -107,33 +112,28 @@ const NavBar: React.FC = () => {
               </NavDropdown>
             )}
           </Nav>
-          <Form>
-            <Row className="g-0">
-              {/* <Col xs="auto" className="p-0">
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  className="m-0"
-                />
-              </Col> */}
-              {/* <Col xs="auto" className="p-0">
-                <Button
-                  className="navlink-margin-left nav-link-size m-0"
-                  variant="khaki"
-                  type="submit"
-                >
-                  <Search />
-                </Button>
-              </Col> */}
-            </Row>
-          </Form>
-          <Nav.Link
-            className="navlink-margin-left nav-link-size"
-            href="/cart"
-            active={pathName === '/cart'}
-          >
-            <Cart />
-          </Nav.Link>
+          {currentUser && (
+            <Form>
+              <Row className="g-0">
+                <Col xs="auto" className="p-0">
+                  <Form.Control
+                    type="text"
+                    placeholder="Search"
+                    className="m-0 mx-4"
+                  />
+                </Col>
+                <Col xs="auto" className="p-0">
+                  <Button
+                    className="navlink-margin-left nav-link-size mx-3"
+                    variant="khaki"
+                    type="submit"
+                  >
+                    <Search />
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

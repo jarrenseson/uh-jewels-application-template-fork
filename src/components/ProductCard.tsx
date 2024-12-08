@@ -9,7 +9,7 @@ const ProductCard = ({ jewel }: { jewel: Jewels }) => (
     <Card.Header>
       <Image className="justify-context-center" src={jewel.image} width={80} />
       <Card.Title>
-        {jewel.productName}
+        {jewel.name}
       </Card.Title>
       <Card.Subtitle>
         {jewel.price}

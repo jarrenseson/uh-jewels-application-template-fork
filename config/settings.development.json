@@ -4,10 +4,26 @@
     { "email": "john@foo.com", "password": "changeme" }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+   "defaultJewels": [
+    {"name": "The Kona",
+     "price": 50,
+    "image":"chokernecklace.png",
+    "owner": "john@foo.com",
+    "description": "A stunning choker necklace with a large Kona Abalone centerpiece."
+  },
+
+    {"name": "Blue Dream",
+     "price": 40,
+    "image":"necklace.png",
+    "owner":"john@foo.com",
+    "description":"A medium sized Kona Abalone shell with a dangling freshwater pearl."
+},
+
+    {"name": "Drop Bracelet", 
+    "price": 30,
+    "image":"bracelet.png",
+    "owner":"john@foo.com",
+    "description":"A italian style adjustable sterling silver bracelet with a keiki abalone."
+  }
   ]
 }

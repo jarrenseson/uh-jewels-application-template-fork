@@ -7,6 +7,14 @@ export const AddStuffSchema = Yup.object({
   owner: Yup.string().required(),
 });
 
+export const AddJewelsSchema = Yup.object({
+  name: Yup.string().required(),
+  price: Yup.number().positive().required(),
+  image: Yup.string().required(),
+  description: Yup.string().required(),
+  owner: Yup.string().required(),
+});
+
 export const EditStuffSchema = Yup.object({
   id: Yup.number().required(),
   name: Yup.string().required(),
@@ -25,3 +33,10 @@ export const AddShippingInfoSchema = Yup.object({
   state: Yup.string().required(),
   country: Yup.string().required(),
 });
+
+export interface Jewels {
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+}

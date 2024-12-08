@@ -55,15 +55,15 @@ const NavBar: React.FC = () => {
               <>
                 <Nav.Link
                   id="add-stuff-nav"
-                  href="/add"
-                  active={pathName === '/add'}
+                  href="/productspage"
+                  active={pathName === '/productspage'}
                 >
-                  Add Stuff
+                  Shop Jewels
                 </Nav.Link>
                 <Nav.Link
                   id="list-stuff-nav"
                   href="/shipping"
-                  active={pathName === '/list'}
+                  active={pathName === '/productspage'}
                 >
                   Shipping
                 </Nav.Link>
@@ -75,7 +75,7 @@ const NavBar: React.FC = () => {
                 href="/admin"
                 active={pathName === '/admin'}
               >
-                Admin
+                List New Products
               </Nav.Link>
             )}
           </Nav>

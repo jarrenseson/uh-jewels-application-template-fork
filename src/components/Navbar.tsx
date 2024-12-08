@@ -3,8 +3,6 @@
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import {
-  Button,
-  Col,
   Container,
   Form,
   Image,
@@ -20,7 +18,6 @@ import {
   Lock,
   PersonFill,
   PersonPlusFill,
-  Search,
 } from 'react-bootstrap-icons';
 
 const NavBar: React.FC = () => {
@@ -112,14 +109,14 @@ const NavBar: React.FC = () => {
           </Nav>
           <Form>
             <Row className="g-0">
-              <Col xs="auto" className="p-0">
+              {/* <Col xs="auto" className="p-0">
                 <Form.Control
                   type="text"
                   placeholder="Search"
                   className="m-0"
                 />
-              </Col>
-              <Col xs="auto" className="p-0">
+              </Col> */}
+              {/* <Col xs="auto" className="p-0">
                 <Button
                   className="navlink-margin-left nav-link-size m-0"
                   variant="khaki"
@@ -127,7 +124,7 @@ const NavBar: React.FC = () => {
                 >
                   <Search />
                 </Button>
-              </Col>
+              </Col> */}
             </Row>
           </Form>
           <Nav.Link

@@ -63,6 +63,7 @@ const NavBar: React.FC = () => {
               </>
             )}
             {role === 'ADMIN' && (
+
               <Nav.Link
                 id="admin-stuff-nav"
                 href="/admin"
@@ -70,6 +71,8 @@ const NavBar: React.FC = () => {
               >
                 List New Products
               </Nav.Link>
+            ) : (
+              ''
             )}
           </Nav>
           <Nav>
@@ -112,28 +115,6 @@ const NavBar: React.FC = () => {
               </NavDropdown>
             )}
           </Nav>
-          {currentUser && (
-            <Form>
-              <Row className="g-0">
-                <Col xs="auto" className="p-0">
-                  <Form.Control
-                    type="text"
-                    placeholder="Search"
-                    className="m-0 mx-4"
-                  />
-                </Col>
-                <Col xs="auto" className="p-0">
-                  <Button
-                    className="navlink-margin-left nav-link-size mx-3"
-                    variant="khaki"
-                    type="submit"
-                  >
-                    <Search />
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

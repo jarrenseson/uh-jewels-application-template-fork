@@ -1,7 +1,7 @@
 import AddShippingInfoForm from '@/components/AddShippingInfoForm';
 import { getServerSession } from 'next-auth';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import authOptions from '@/lib/authOptions';
 import { Jewels } from '@/lib/validationSchemas';
 import { prisma } from '@/lib/prisma';
 

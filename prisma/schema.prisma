@@ -58,7 +58,7 @@ model ShippingInfo {
 
 model Jewels {
   id      Int @id @default(autoincrement())
-  name    String
+  name    String @unique
   price   Int
   image   String
   owner   String

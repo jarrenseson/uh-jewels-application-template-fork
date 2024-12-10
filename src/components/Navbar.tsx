@@ -3,15 +3,15 @@
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import {
-  Button,
-  Col,
+  // Button,
+  // Col,
   Container,
-  Form,
+  // Form,
   Image,
   Nav,
   Navbar,
   NavDropdown,
-  Row,
+  // Row,
 } from 'react-bootstrap';
 import {
   BoxArrowRight,
@@ -20,7 +20,6 @@ import {
   Lock,
   PersonFill,
   PersonPlusFill,
-  Search,
 } from 'react-bootstrap-icons';
 
 const NavBar: React.FC = () => {
@@ -71,8 +70,6 @@ const NavBar: React.FC = () => {
               >
                 List New Products
               </Nav.Link>
-            ) : (
-              ''
             )}
           </Nav>
           <Nav>

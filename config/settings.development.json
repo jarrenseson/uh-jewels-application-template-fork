@@ -15,14 +15,14 @@
     {"name": "Blue Dream",
      "price": 40,
     "image":"necklace.png",
-    "owner":"john@foo.com",
+    "owner": "john@foo.com",
     "description":"A medium sized Kona Abalone shell with a dangling freshwater pearl."
 },
 
     {"name": "Drop Bracelet", 
     "price": 30,
     "image":"bracelet.png",
-    "owner":"john@foo.com",
+    "owner": "john@foo.com",
     "description":"A italian style adjustable sterling silver bracelet with a keiki abalone."
   }
   ]

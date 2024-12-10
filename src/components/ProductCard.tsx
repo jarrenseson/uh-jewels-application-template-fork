@@ -7,11 +7,13 @@ import { Card, Image } from 'react-bootstrap';
 const ProductCard = ({ jewel }: { jewel: Jewels }) => (
   <Card>
     <Card.Header>
-      <Image className="justify-context-center" src={jewel.image} width={80} />
+      <Image className="mx-auto d-block" src={jewel.image} width={200} />
       <Card.Title>
         {jewel.name}
       </Card.Title>
       <Card.Subtitle>
+        $
+        {' '}
         {jewel.price}
       </Card.Subtitle>
       <Card.Body>

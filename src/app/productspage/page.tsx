@@ -8,18 +8,14 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 
 const ListPage = async () => {
+  // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
     session as {
-      user: { email: string, id: string; randomKey: string };
+      user: { email: string; id: string; randomKey: string };
     } | null,
   );
-  const owner = session?.user!.email ? session.user.email : '';
-  const jewels: Jewels[] = await prisma.jewels.findMany({
-    where: {
-      owner,
-    },
-  });
+  const jewels: Jewels[] = await prisma.jewels.findMany();
   console.log(jewels);
   return (
     <main>

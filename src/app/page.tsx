@@ -9,7 +9,6 @@ const Home = () => (
           <h2 className="subtitle">SERIES 01</h2>
         </div>
         <a
-          // href="/OurProductsPage"
           href="/productspage"
           style={{
             display: 'inline-block',

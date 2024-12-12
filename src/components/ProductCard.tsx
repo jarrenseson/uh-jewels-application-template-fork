@@ -11,7 +11,7 @@ const ProductCard = ({ jewel }: { jewel: Jewels }) => {
   const { data: session, status } = useSession(); // Combine `data` and `status`
   const currentUser = session?.user?.email;
 
-  const AddToCart = async (data: { userEmail: string }) => {
+  const AddToCart = async (data: { userEmail: string, jewel: string[] }) => {
     await addToCart(data);
   };
 
@@ -39,7 +39,7 @@ const ProductCard = ({ jewel }: { jewel: Jewels }) => {
           type="button"
           onClick={() => {
             if (currentUser) {
-              AddToCart({ userEmail: currentUser });
+              AddToCart({ userEmail: currentUser, jewel: [jewel.name] });
             }
           }}
           className="btn btn-warning float-right"

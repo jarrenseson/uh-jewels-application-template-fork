@@ -67,5 +67,6 @@ model Jewels {
 
 model Cart {
   id        Int    @id @default(autoincrement())
-  userEmail String
+  userEmail String @unique
+  jewel String[]
 }

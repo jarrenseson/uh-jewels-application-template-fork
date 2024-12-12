@@ -34,6 +34,16 @@ export async function addShippingInfo(shippingInfo: {
   redirect('/');
 }
 
+export async function addToCart(info: {
+  userEmail: String;
+}) {
+  await prisma.cart.create({
+    data: {
+      userEmail: info.userEmail,
+    },
+  });
+}
+
 export async function addJewels(jewels: {
   owner: string;
   name: string,

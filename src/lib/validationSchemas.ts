@@ -34,6 +34,10 @@ export const AddShippingInfoSchema = Yup.object({
   country: Yup.string().required(),
 });
 
+export const AddToCartSchema = Yup.object({
+  userEmail: Yup.string().required(),
+});
+
 export interface Jewels {
   name: string;
   price: number;

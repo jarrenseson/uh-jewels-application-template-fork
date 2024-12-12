@@ -13,10 +13,8 @@ type ChangePasswordForm = {
   oldpassword: string;
   password: string;
   confirmPassword: string;
-  // acceptTerms: boolean;
 };
 
-/** The change password page. */
 const ChangePassword = () => {
   const { data: session, status } = useSession();
   const email = session?.user?.email || '';
@@ -41,7 +39,6 @@ const ChangePassword = () => {
   });
 
   const onSubmit = async (data: ChangePasswordForm) => {
-    // console.log(JSON.stringify(data, null, 2));
     await changePassword({ email, ...data });
     await swal('Password Changed', 'Your password has been changed', 'success', { timer: 2000 });
     reset();
@@ -56,51 +53,53 @@ const ChangePassword = () => {
       <Container>
         <Row className="justify-content-center">
           <Col xs={5}>
-            <h1 className="text-center">Change Password</h1>
-            <Card>
+            <h1 className="text-center mb-4">Change Password</h1>
+            <Card className="shadow-sm">
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                  <Form.Group className="form-group">
-                    <Form.Label>Old Passord</Form.Label>
-                    <input
+                  <Form.Group className="mb-3">
+                    <Form.Label>Old Password</Form.Label>
+                    <Form.Control
                       type="password"
                       {...register('oldpassword')}
-                      className={`form-control ${errors.oldpassword ? 'is-invalid' : ''}`}
+                      isInvalid={!!errors.oldpassword}
                     />
-                    <div className="invalid-feedback">{errors.oldpassword?.message}</div>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.oldpassword?.message}
+                    </Form.Control.Feedback>
                   </Form.Group>
 
-                  <Form.Group className="form-group">
+                  <Form.Group className="mb-3">
                     <Form.Label>New Password</Form.Label>
-                    <input
+                    <Form.Control
                       type="password"
                       {...register('password')}
-                      className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                      isInvalid={!!errors.password}
                     />
-                    <div className="invalid-feedback">{errors.password?.message}</div>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.password?.message}
+                    </Form.Control.Feedback>
                   </Form.Group>
-                  <Form.Group className="form-group">
+
+                  <Form.Group className="mb-3">
                     <Form.Label>Confirm Password</Form.Label>
-                    <input
+                    <Form.Control
                       type="password"
                       {...register('confirmPassword')}
-                      className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
+                      isInvalid={!!errors.confirmPassword}
                     />
-                    <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.confirmPassword?.message}
+                    </Form.Control.Feedback>
                   </Form.Group>
-                  <Form.Group className="form-group py-3">
-                    <Row>
-                      <Col>
-                        <Button type="submit" className="btn btn-primary">
-                          Change
-                        </Button>
-                      </Col>
-                      <Col>
-                        <Button type="button" onClick={() => reset()} className="btn btn-warning float-right">
-                          Reset
-                        </Button>
-                      </Col>
-                    </Row>
+
+                  <Form.Group className="text-center">
+                    <Button type="submit" variant="primary" className="me-2">
+                      Change
+                    </Button>
+                    <Button type="button" onClick={() => reset()} variant="warning">
+                      Reset
+                    </Button>
                   </Form.Group>
                 </Form>
               </Card.Body>

@@ -45,22 +45,28 @@ model Stuff {
 }
 
 model ShippingInfo {
-  id Int @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   firstName String
-  lastName String
-  address1 String
-  address2 String
-  city String
-  zip String
-  state String
-  country String
+  lastName  String
+  address1  String
+  address2  String
+  city      String
+  zip       String
+  state     String
+  country   String
 }
 
 model Jewels {
-  id      Int @id @default(autoincrement())
-  name    String @unique
-  price   Int
-  image   String
-  owner   String
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  price       Int
+  image       String
+  owner       String
   description String
+}
+
+model Cart {
+  id        Int    @id @default(autoincrement())
+  userEmail String @unique
+  jewel String[]
 }

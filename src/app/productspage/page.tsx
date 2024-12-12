@@ -30,8 +30,8 @@ const ListPage = async () => {
           ))}
         </Row>
         <div className="text-center mt-4">
-          <Link href="/order" passHref>
-            <Button variant="primary">Place Order</Button>
+          <Link href="/cart" passHref>
+            <Button variant="primary">Proceed to Cart</Button>
           </Link>
         </div>
       </Container>

@@ -63,21 +63,39 @@ const Cart = async () => {
   }
 
   return (
-    <main>
-      <Table>
-        <thead>
-          <tr>
-            <th>Jewel Name</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartItems.map((item) => (
-            <CTable key={item.jewelName} {...item} />
-          ))}
-        </tbody>
-      </Table>
+    <main className="cart-page">
+      <Container className="mt-5">
+        <Row className="justify-content-center">
+          <Col md={10}>
+            <h1 className="text-center mb-4 text-gradient">Your Shopping Cart</h1>
+            {cartItems.length > 0 ? (
+              <Table bordered hover responsive className="cart-table shadow-lg rounded border-0">
+                <thead className="table-dark text-uppercase">
+                  <tr>
+                    <th>Jewel Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cartItems.map((item) => (
+                    <CTable key={item.jewelName} {...item} />
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr className="table-light">
+                    <td colSpan={3} className="text-end fw-bold">Total:</td>
+                    <td className="fw-bold">${total.toFixed(2)}</td>
+                  </tr>
+                </tfoot>
+              </Table>
+            ) : (
+              <p className="text-center fs-5 text-muted">Your cart is empty.</p>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </main>
   );
 };

@@ -123,3 +123,16 @@ body {
 .shipping-link-text {
   margin-top: 1px;
 }
+
+.cursivetext {
+  font-family: 'Snell Roundhand, cursive';
+}
+
+.orderfont {
+  font-family: 'fantasy';
+}
+
+.small-card {
+  width: 300px;
+  height: auto;
+}

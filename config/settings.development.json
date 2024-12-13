@@ -7,23 +7,23 @@
    "defaultJewels": [
     {"name": "The Kona",
      "price": 50,
-    "image":"chokernecklace.png",
+    "image":"thekona.JPG",
     "owner": "john@foo.com",
-    "description": "A stunning choker necklace with a large Kona Abalone centerpiece."
+    "description": "A stunning statement necklace with a large Kona Abalone centerpiece."
   },
 
     {"name": "Blue Dream",
      "price": 40,
-    "image":"necklace.png",
+    "image":"bluedreamnecklace.JPG",
     "owner": "john@foo.com",
-    "description":"A medium sized Kona Abalone shell with a dangling freshwater pearl."
+    "description":"A medium natural blue sized Kona Abalone shell with dangling pearls."
 },
 
     {"name": "Drop Bracelet", 
     "price": 30,
-    "image":"bracelet.png",
+    "image":"dropbracelet.JPG",
     "owner": "john@foo.com",
-    "description":"A italian style adjustable sterling silver bracelet with a keiki abalone."
+    "description":"An italian style adjustable sterling silver bracelet with a natural vibrant blue keiki abalone and freshwater pearl drop."
   }
   ]
 }

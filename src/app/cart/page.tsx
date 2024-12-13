@@ -4,9 +4,8 @@ import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
-import CTable from '@/components/CartTable';
-import { CartTable } from '@/components/CartTable';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import CTable, { CartTable } from '@/components/CartTable';
+import { Col, Container, Row, Table, Button } from 'react-bootstrap';
 
 const Cart = async () => {
   const session = await getServerSession(authOptions);
@@ -80,19 +79,28 @@ const Cart = async () => {
                 </thead>
                 <tbody>
                   {cartItems.map((item) => (
-                    <CTable key={item.jewelName} {...item} />
+                    <CTable
+                      key={item.jewelName}
+                      {...item}
+                    />
                   ))}
                 </tbody>
                 <tfoot>
                   <tr className="table-light">
                     <td colSpan={3} className="text-end fw-bold">Total:</td>
-                    <td className="fw-bold">${total.toFixed(2)}</td>
+                    <td className="fw-bold">
+                      $
+                      {total.toFixed(2)}
+                    </td>
                   </tr>
                 </tfoot>
               </Table>
             ) : (
               <p className="text-center fs-5 text-muted">Your cart is empty.</p>
             )}
+            <div className="text-center mt-4">
+              <Button variant="primary" href="/payment">Proceed to Payment</Button>
+            </div>
           </Col>
         </Row>
       </Container>

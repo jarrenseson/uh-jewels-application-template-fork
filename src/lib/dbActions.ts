@@ -34,6 +34,26 @@ export async function addShippingInfo(shippingInfo: {
   redirect('/');
 }
 
+export async function editCart(info: {
+  userEmail: string,
+  jewelName: string[],
+  quantity: number[],
+}) {
+  await prisma.cartTable.upsert({
+    where: {
+      userEmail: info.userEmail,
+    },
+    create: {
+      userEmail: info.userEmail,
+      jewelName: info.jewelName,
+      quantity: info.quantity,
+    },
+    update: {
+      quantity: info.quantity,
+    },
+  });
+}
+
 export async function addToCart(info: {
   userEmail: string,
   jewel: string[],

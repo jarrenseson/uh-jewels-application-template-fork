@@ -74,7 +74,7 @@ const Cart = async () => {
                     <th>Jewel Name</th>
                     <th>Quantity</th>
                     <th>Unit Price</th>
-                    <th>Total Price</th>
+                    <th>{}</th>
                   </tr>
                 </thead>
                 <tbody>

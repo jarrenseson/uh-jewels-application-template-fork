@@ -54,7 +54,7 @@ const ChangePassword = () => {
   return (
     <main>
       <Container>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center" style={{ marginTop: '150px' }}>
           <Col xs={5}>
             <h1 className="text-center">Change Password</h1>
             <Card>

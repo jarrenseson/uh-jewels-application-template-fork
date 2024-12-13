@@ -107,8 +107,8 @@ const PaymentPage = () => {
                     </Col>
                   </Row>
                 </Row>
-                <Row className="mt-3">
-                  <h1>Billing Information</h1>
+                <h1 className="mt-3">Billing Information</h1>
+                <Row>
                   <Col>
                     <Row>
                       <Col>

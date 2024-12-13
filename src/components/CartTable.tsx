@@ -14,7 +14,9 @@ const CTable = ({ jewelName, quantity, price }: CartTable) => (
     <td className="table-cell jewel-name text-primary">{jewelName}</td>
     <td className="table-cell quantity">
       <label htmlFor={`quantity-${jewelName}`} className="sr-only">
-        Quantity for {jewelName}
+        Quantity for
+        {' '}
+        {jewelName}
       </label>
       <input
         id={`quantity-${jewelName}`}

@@ -19,9 +19,9 @@ const OrderPage = () => {
 
   // Map of product names to images
   const productImages: Record<ProductName, string> = {
-    'Drop Bracelet': '/bracelet.png',
-    'The Kona': '/chokernecklace.png',
-    'Blue Dream': '/necklace.png',
+    'Drop Bracelet': '/dropbracelet.JPG',
+    'The Kona': '/thekona.JPG',
+    'Blue Dream': '/bluedreamnecklace.JPG',
     '-----------------------------': '', // Option for the placeholder
   };
 
@@ -97,7 +97,7 @@ const OrderPage = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center">
+          <Col className="text-center orderfont">
             <h2>Order Form</h2>
           </Col>
           <Card>
@@ -168,7 +168,7 @@ const OrderPage = () => {
 
               {/* Display selected products and their quantities */}
               <Row className="mt-3">
-                <Col className="text-center">
+                <Col className="text-center orderfont">
                   <h5>Selected Products:</h5>
                   <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
                     {selectedProducts.map((product) => (
@@ -207,7 +207,7 @@ const OrderPage = () => {
 
               {/* Display total price */}
               <Row className="mt-3">
-                <Col className="text-center">
+                <Col className="text-center orderfont">
                   <h5>
                     Total Price: $
                     {calculateTotalPrice()}
@@ -217,7 +217,7 @@ const OrderPage = () => {
 
               {/* Add More Button */}
               <Row className="mt-3">
-                <Col className="text-center">
+                <Col className="text-center orderfont">
                   <Button
                     variant="dark"
                     onClick={() => {
@@ -238,7 +238,7 @@ const OrderPage = () => {
                   variant="secondary"
                   href="/payment"
                   active={pathName === '/payment'}
-                  className="ms-auto me-auto mt-4"
+                  className="ms-auto me-auto mt-4 orderfont"
                   style={{ width: '98%' }}
                 >
                   Continue to Payment Page

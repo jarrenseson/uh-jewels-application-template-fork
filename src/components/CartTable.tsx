@@ -21,7 +21,7 @@ const CTable = ({ jewelName, quantity, price }: CartTable) => (
         type="number"
         min="1"
         value={quantity}
-        className="quantity-input small-input border border-secondary rounded"
+        className="quantity-input form-control form-control-sm w-15"
         onChange={(e) => console.log(`Update quantity for ${jewelName}:`, e.target.value)}
       />
     </td>

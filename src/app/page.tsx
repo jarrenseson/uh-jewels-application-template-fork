@@ -10,22 +10,7 @@ const Home = () => (
         </div>
         <a
           href="/productspage"
-          style={{
-            display: 'inline-block',
-            padding: '12px 24px',
-            fontSize: '24px',
-            fontWeight: 'bold',
-            fontFamily: 'Snell Roundhand',
-            color: '#fff',
-            textDecoration: 'none',
-            border: '2px solid white', // White outline
-            borderRadius: '0px', // Square corners (90-degree angles)
-            backgroundColor: 'transparent', // Transparent background
-            textAlign: 'center',
-            letterSpacing: '1px', // Slight spacing between letters
-            transition: 'background-color 0.3s ease', // Smooth background transition
-            marginTop: '20px', // Add some space between the text and the button
-          }}
+          className="shop-button"
         >
           Shop Jewels
         </a>

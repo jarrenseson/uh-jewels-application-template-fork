@@ -7,6 +7,7 @@ import { Button, Card, Col, Container, Dropdown, Form, Row } from 'react-bootstr
 const PaymentPage = () => {
   const [selectedPayment, setSelectedPayment] = useState('--');
   const [selectedMonth, setSelectedMonth] = useState('--');
+  const paymentMethods = ['--', 'Visa', 'Master Card', 'American Express', 'Discover', 'JCB'];
 
   const handleSelect = (paymentMethod: string) => {
     setSelectedPayment(paymentMethod);
@@ -30,16 +31,13 @@ const PaymentPage = () => {
                   <Dropdown>
                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                       {selectedPayment}
-                      {' '}
-                      {/* Display the selected payment method */}
                     </Dropdown.Toggle>
                     <Dropdown.Menu data-bs-theme="dark">
-                      <Dropdown.Item onClick={() => handleSelect('--')}>--</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleSelect('Visa')}>Visa</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleSelect('Master Card')}>Master Card</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleSelect('American Express')}>American Express</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleSelect('Discover')}>Discover</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleSelect('JCB')}>JCB</Dropdown.Item>
+                      {paymentMethods.map((method) => (
+                        <Dropdown.Item key={method} onClick={() => handleSelect(method)}>
+                          {method}
+                        </Dropdown.Item>
+                      ))}
                     </Dropdown.Menu>
                   </Dropdown>
                   <Row>
@@ -59,23 +57,14 @@ const PaymentPage = () => {
                           <Dropdown>
                             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                               {selectedMonth}
-                              {' '}
-                              {/* Display the selected payment method */}
                             </Dropdown.Toggle>
                             <Dropdown.Menu data-bs-theme="dark">
-                              <Dropdown.Item onClick={() => handleSelect('--')}>--</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('01')}>01</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('02')}>02</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('03')}>03</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('04')}>04</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('05')}>05</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('06')}>06</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('07')}>07</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('08')}>08</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('09')}>09</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('10')}>10</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('11')}>11</Dropdown.Item>
-                              <Dropdown.Item onClick={() => handleSelect('12')}>12</Dropdown.Item>
+                              {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
+                                // eslint-disable-next-line max-len
+                                <Dropdown.Item key={month} onClick={() => handleSelect(month.toString().padStart(2, '0'))}>
+                                  {month.toString().padStart(2, '0')}
+                                </Dropdown.Item>
+                              ))}
                             </Dropdown.Menu>
                           </Dropdown>
                         </Col>
@@ -216,6 +205,7 @@ const PaymentPage = () => {
                   style={{ width: '98%' }}
                 >
                   Continue to Shipping Form
+                  {' '}
                   {' >>> '}
                 </Button>
               </Row>

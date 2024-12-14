@@ -10,17 +10,8 @@ import { addJewels } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddJewelsSchema } from '@/lib/validationSchemas';
 
-const onSubmit = async (data: { name: string; price: number; owner: string; description: string; image: string }) => {
-  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  await addJewels(data);
-  swal('Success', 'Your item has been added', 'success', {
-    timer: 2000,
-  });
-};
-
 const AddProductForm: React.FC = () => {
   const { data: session, status } = useSession();
-  // console.log('AddStuffForm', status, session);
   const currentUser = session?.user?.email || '';
   const {
     register,
@@ -30,73 +21,93 @@ const AddProductForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(AddJewelsSchema),
   });
+
   if (status === 'loading') {
     return <LoadingSpinner />;
   }
+
   if (status === 'unauthenticated') {
     redirect('/auth/signin');
   }
 
+  const onSubmit = async (data: { name: string; price: number; owner: string; description: string; image: string }) => {
+    await addJewels(data);
+    swal('Success', 'Your item has been added', 'success', {
+      timer: 2000,
+    });
+  };
+
   return (
-    <Container className="py-3">
+    <Container className="py-5">
       <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center">
-            <h2>List New Item</h2>
-          </Col>
-          <Card>
+        <Col md={6}>
+          <Card className="shadow-lg border-0 rounded-3">
             <Card.Body>
+              <Col className="text-center mb-4">
+                <h2>List New Item</h2>
+              </Col>
               <Form onSubmit={handleSubmit(onSubmit)}>
-                <Form.Group>
+                <Form.Group className="mb-3">
                   <Form.Label>Name</Form.Label>
-                  <input
+                  <Form.Control
                     type="text"
                     {...register('name')}
-                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    isInvalid={!!errors.name}
+                    className="shadow-sm"
                   />
-                  <div className="invalid-feedback">{errors.name?.message}</div>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.name?.message}
+                  </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group>
+
+                <Form.Group className="mb-3">
                   <Form.Label>Price</Form.Label>
-                  <input
+                  <Form.Control
                     type="number"
                     {...register('price')}
-                    className={`form-control ${errors.price ? 'is-invalid' : ''}`}
+                    isInvalid={!!errors.price}
+                    className="shadow-sm"
                   />
-                  <div className="invalid-feedback">{errors.price?.message}</div>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.price?.message}
+                  </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group>
+
+                <Form.Group className="mb-3">
                   <Form.Label>Description</Form.Label>
-                  <input
+                  <Form.Control
                     type="text"
                     {...register('description')}
-                    className={`form-control ${errors.description ? 'is-invalid' : ''}`}
+                    isInvalid={!!errors.description}
+                    className="shadow-sm"
                   />
-                  <div className="invalid-feedback">{errors.description?.message}</div>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.description?.message}
+                  </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group>
-                  <Form.Label>Image</Form.Label>
-                  <input
+
+                <Form.Group className="mb-3">
+                  <Form.Label>Image URL</Form.Label>
+                  <Form.Control
                     type="text"
                     {...register('image')}
-                    className={`form-control ${errors.image ? 'is-invalid' : ''}`}
+                    isInvalid={!!errors.image}
+                    className="shadow-sm"
                   />
-                  <div className="invalid-feedback">{errors.image?.message}</div>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.image?.message}
+                  </Form.Control.Feedback>
                 </Form.Group>
+
                 <input type="hidden" {...register('owner')} value={currentUser} />
-                <Form.Group className="form-group">
-                  <Row className="pt-3">
-                    <Col>
-                      <Button type="submit" variant="primary">
-                        Submit
-                      </Button>
-                    </Col>
-                    <Col>
-                      <Button type="button" onClick={() => reset()} variant="warning" className="float-right">
-                        Reset
-                      </Button>
-                    </Col>
-                  </Row>
+
+                <Form.Group className="d-flex justify-content-between mt-4">
+                  <Button type="submit" variant="primary" className="w-100">
+                    Submit
+                  </Button>
+                  <Button type="button" onClick={() => reset()} variant="warning" className="w-100 mt-2">
+                    Reset
+                  </Button>
                 </Form.Group>
               </Form>
             </Card.Body>

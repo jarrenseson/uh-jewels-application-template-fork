@@ -175,3 +175,16 @@ body {
   color: black; /* Change text color to black on hover */
   border-color: black; /* Change border color to black on hover */
 }
+
+.cursivetext {
+  font-family: 'Snell Roundhand, cursive';
+}
+
+.orderfont {
+  font-family: 'fantasy';
+}
+
+.small-card {
+  width: 300px;
+  height: auto;
+}

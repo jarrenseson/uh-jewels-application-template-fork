@@ -23,6 +23,14 @@ export const EditStuffSchema = Yup.object({
   owner: Yup.string().required(),
 });
 
+export const EditCartItemSchema = Yup.object({
+  id: Yup.number().required(),
+  owner: Yup.string().required(),
+  jewelName: Yup.string().required(),
+  quantity: Yup.number().required(),
+  pricePerUnit: Yup.number().required(),
+});
+
 export const AddShippingInfoSchema = Yup.object({
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),

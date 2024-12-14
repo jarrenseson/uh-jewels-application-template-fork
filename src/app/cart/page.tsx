@@ -4,23 +4,8 @@ import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
-import CTable, { CartTable } from '@/components/CartTable';
-import { addCartItems } from '@/lib/dbActions';
+import CTable from '@/components/CartTable';
 import { Col, Container, Row, Table, Button } from 'react-bootstrap';
-
-const addToCart = async (data:{
-  owner: string,
-  jewelName: string,
-  quantity: number,
-  pricePerUnit: number,
-}) => {
-  await addCartItems({
-    owner: data.owner,
-    jewelName: data.jewelName,
-    quantity: data.quantity,
-    pricePerUnit: data.pricePerUnit,
-  });
-};
 
 const Cart = async () => {
   const session = await getServerSession(authOptions);
@@ -36,25 +21,16 @@ const Cart = async () => {
   const cart = await prisma.cartItems.findMany({
     where: { owner: currentUser },
     select: {
-      owner: false,
+      id: true,
+      owner: true,
       jewelName: true,
       quantity: true,
       pricePerUnit: true,
     },
   });
 
-  console.log(cart);
-
-  // Fetch all jewel prices from the database
-  const prices = await prisma.jewels.findMany({
-    select: {
-      name: true,
-      price: true,
-      image: false,
-      owner: false,
-      description: false,
-    },
-  });
+  // eslint-disable-next-line no-param-reassign
+  const total = cart.reduce((price, item) => price += item.quantity * item.pricePerUnit, 0);
 
   return (
     <main className="cart-page">
@@ -75,7 +51,7 @@ const Cart = async () => {
                 <tbody>
                   {cart.map((item) => (
                     <CTable
-                      key={item.jewelName}
+                      key={item.id}
                       {...item}
                     />
                   ))}

@@ -61,24 +61,22 @@ export async function addCartItems(info: {
   });
 }
 
-export async function addToCart(info: {
-  userEmail: string,
-  jewel: string[],
+export async function editCart(info: {
+  id: number,
+  owner: string,
+  jewelName: string,
+  quantity: number,
+  pricePerUnit: number,
 }) {
-  await prisma.cart.upsert({
+  await prisma.cartItems.update({
     where: {
-      userEmail: info.userEmail, // Unique identifier for the cart
+      id: info.id,
     },
-    create: {
-      userEmail: info.userEmail,
-      jewel: info.jewel,
-    },
-    update: {
-      jewel: {
-        push: info.jewel, // Append new jewels to the existing array
-      },
+    data: {
+      quantity: info.quantity,
     },
   });
+  redirect('/cart');
 }
 
 export async function addJewels(jewels: {

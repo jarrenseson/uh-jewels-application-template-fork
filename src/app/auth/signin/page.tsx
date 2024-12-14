@@ -27,7 +27,7 @@ const SignIn = () => {
   return (
     <main>
       <Container>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center" style={{ marginTop: '160px' }}>
           <Col xs={5}>
             <h1 className="text-center">Sign In</h1>
             <Card>
@@ -48,7 +48,7 @@ const SignIn = () => {
               </Card.Body>
               <Card.Footer>
                 Don&apos;t have an account?
-                <a href="/auth/signup">Sign up</a>
+                <a href="/auth/signup"> Sign up</a>
               </Card.Footer>
             </Card>
           </Col>

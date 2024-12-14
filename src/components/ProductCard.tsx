@@ -8,7 +8,7 @@ import LoadingSpinner from './LoadingSpinner';
 
 /* Renders a single product. See productspage/page.tsx. */
 const ProductCard = ({ jewel }: { jewel: Jewels }) => {
-  const { data: session, status } = useSession(); // Combine `data` and `status`
+  const { data: session, status } = useSession(); // Combine data and status
   const currentUser = session?.user?.email;
 
   const AddToCart = async (data: { userEmail: string, jewel: string[] }) => {

@@ -17,14 +17,14 @@ const ListPage = async () => {
   );
 
   const jewels: Jewels[] = await prisma.jewels.findMany();
-  console.log(jewels);
+
   return (
     <main>
       <Container fluid className="py-3">
-        <h1 className="text-center">Shop Jewels</h1>
+        <h1 className="text-center mb-4">Shop Jewels</h1>
         <Row xs={1} md={2} lg={3} className="g-4">
           {jewels.map((jewel) => (
-            <Col key={jewel.name}>
+            <Col key={jewel.name} className="d-flex justify-content-center">
               <ProductCard jewel={jewel} />
             </Col>
           ))}

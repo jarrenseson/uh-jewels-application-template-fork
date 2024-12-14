@@ -17,7 +17,7 @@ export async function addShippingInfo(shippingInfo: {
   city: string;
   zip: string;
   state: string;
-  country: string
+  country: string;
 }) {
   await prisma.shippingInfo.create({
     data: {
@@ -32,6 +32,51 @@ export async function addShippingInfo(shippingInfo: {
     },
   });
   redirect('/');
+}
+
+export async function addCartItems(info: {
+  owner: string;
+  jewelName: string;
+  quantity: number;
+  pricePerUnit: number;
+}) {
+  await prisma.cartItems.upsert({
+    where: {
+      owner_jewelName: {
+        owner: info.owner,
+        jewelName: info.jewelName,
+      },
+    },
+    update: {
+      quantity: {
+        increment: info.quantity, // Increment the quantity by the specified amount
+      },
+    },
+    create: {
+      owner: info.owner,
+      jewelName: info.jewelName,
+      quantity: info.quantity,
+      pricePerUnit: info.pricePerUnit, // Add the initial quantity
+    },
+  });
+}
+
+export async function editCart(info: {
+  id: number,
+  owner: string,
+  jewelName: string,
+  quantity: number,
+  pricePerUnit: number,
+}) {
+  await prisma.cartItems.update({
+    where: {
+      id: info.id,
+    },
+    data: {
+      quantity: info.quantity,
+    },
+  });
+  redirect('/cart');
 }
 
 export async function addJewels(jewels: {

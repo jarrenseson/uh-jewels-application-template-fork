@@ -9,14 +9,13 @@ import { EditCartItemSchema } from '@/lib/validationSchemas';
 import { editCart } from '@/lib/dbActions';
 
 const onSubmit = async (data: CartItems) => {
-  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
   await editCart(data);
   swal('Success', 'Your item has been updated', 'success', {
     timer: 2000,
   });
 };
 
-const EditStuffForm = ({ cartItem }: { cartItem: CartItems }) => {
+const EditCartItemForm = ({ cartItem }: { cartItem: CartItems }) => {
   const {
     register,
     handleSubmit,
@@ -25,19 +24,19 @@ const EditStuffForm = ({ cartItem }: { cartItem: CartItems }) => {
   } = useForm<CartItems>({
     resolver: yupResolver(EditCartItemSchema),
   });
-  // console.log(stuff);
 
   return (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
-            <h2>Edit Stuff</h2>
+            <h2>{cartItem.jewelName}</h2>
           </Col>
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <input type="hidden" {...register('id')} value={cartItem.id} />
+                <input type="hidden" {...register('jewelName')} value={cartItem.jewelName} />
                 <Form.Group>
                   <Form.Label>Quantity</Form.Label>
                   <input
@@ -49,6 +48,7 @@ const EditStuffForm = ({ cartItem }: { cartItem: CartItems }) => {
                   <div className="invalid-feedback">{errors.quantity?.message}</div>
                 </Form.Group>
                 <input type="hidden" {...register('owner')} value={cartItem.owner} />
+                <input type="hidden" {...register('pricePerUnit')} value={cartItem.pricePerUnit} />
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
@@ -72,4 +72,4 @@ const EditStuffForm = ({ cartItem }: { cartItem: CartItems }) => {
   );
 };
 
-export default EditStuffForm;
+export default EditCartItemForm;

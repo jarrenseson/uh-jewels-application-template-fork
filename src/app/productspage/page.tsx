@@ -17,7 +17,7 @@ const ListPage = async () => {
   );
 
   const jewels: Jewels[] = await prisma.jewels.findMany();
-  console.log(jewels);
+  // console.log(jewels);
   return (
     <main>
       <Container fluid className="py-3">

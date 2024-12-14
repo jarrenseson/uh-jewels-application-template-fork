@@ -71,9 +71,12 @@ model Cart {
   jewel     String[]
 }
 
-model CartTable {
-  id        Int      @id @default(autoincrement())
-  userEmail String   @unique
-  jewelName String[]
-  quantity  Int[]
+model CartItems {
+  id        Int    @id @default(autoincrement())
+  owner     String
+  jewelName String
+  quantity  Int
+  pricePerUnit Int
+
+  @@unique([owner, jewelName])
 }

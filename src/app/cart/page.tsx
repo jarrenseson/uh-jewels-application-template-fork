@@ -5,7 +5,22 @@ import { loggedInProtectedPage } from '@/lib/page-protection';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import CTable, { CartTable } from '@/components/CartTable';
+import { addCartItems } from '@/lib/dbActions';
 import { Col, Container, Row, Table, Button } from 'react-bootstrap';
+
+const addToCart = async (data:{
+  owner: string,
+  jewelName: string,
+  quantity: number,
+  pricePerUnit: number,
+}) => {
+  await addCartItems({
+    owner: data.owner,
+    jewelName: data.jewelName,
+    quantity: data.quantity,
+    pricePerUnit: data.pricePerUnit,
+  });
+};
 
 const Cart = async () => {
   const session = await getServerSession(authOptions);
@@ -18,13 +33,17 @@ const Cart = async () => {
   const currentUser = session?.user?.email || '';
 
   // Fetch the user's cart from the database
-  const cart = await prisma.cart.findUnique({
-    where: { userEmail: currentUser },
+  const cart = await prisma.cartItems.findMany({
+    where: { owner: currentUser },
     select: {
-      userEmail: false,
-      jewel: true,
+      owner: false,
+      jewelName: true,
+      quantity: true,
+      pricePerUnit: true,
     },
   });
+
+  console.log(cart);
 
   // Fetch all jewel prices from the database
   const prices = await prisma.jewels.findMany({
@@ -37,37 +56,13 @@ const Cart = async () => {
     },
   });
 
-  type CartItemCounts = { [key: string]: number };
-  let total = 0;
-  const cartItems: CartTable[] = [];
-  const priceMap: Map<string, number> = new Map();
-
-  // Populate the price map with item names and their prices
-  prices.forEach(item => priceMap.set(item.name, item.price));
-
-  if (cart) {
-    const count: CartItemCounts = cart.jewel.reduce((acc, value) => {
-      acc[value] = (acc[value] || 0) + 1;
-      return acc;
-    }, {} as CartItemCounts);
-
-    // Calculate the total price based on item counts and prices
-    for (const name in count) {
-      if (Object.prototype.hasOwnProperty.call(count, name)) {
-        const unitPrice = priceMap.get(name) ?? 0;
-        total += count[name] * unitPrice;
-        cartItems.push({ jewelName: name, quantity: count[name], price: unitPrice });
-      }
-    }
-  }
-
   return (
     <main className="cart-page">
       <Container className="mt-5">
         <Row className="justify-content-center">
           <Col md={10}>
             <h1 className="text-center mb-4 text-gradient">Your Shopping Cart</h1>
-            {cartItems.length > 0 ? (
+            {cart.length > 0 ? (
               <Table bordered hover responsive className="cart-table shadow-lg rounded border-0">
                 <thead className="table-dark text-uppercase">
                   <tr>
@@ -78,7 +73,7 @@ const Cart = async () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {cartItems.map((item) => (
+                  {cart.map((item) => (
                     <CTable
                       key={item.jewelName}
                       {...item}

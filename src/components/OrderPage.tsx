@@ -27,7 +27,7 @@ const OrderPage = () => {
 
   // Map of product names to prices
   const productPrices: Record<ProductName, number> = {
-    'Drop Bracelet': 30, // Set the price for Drop Bracelet
+    'Drop Bracelet': 35, // Set the price for Drop Bracelet
     'The Kona': 50, // Set the price for The Kona
     'Blue Dream': 40, // Set the price for Blue Dream
     '-----------------------------': 0, // Placeholder price

@@ -15,7 +15,6 @@ const ListPage = async () => {
       user: { email: string; id: string; randomKey: string };
     } | null,
   );
-  const currentUser = session?.user?.email;
 
   const jewels: Jewels[] = await prisma.jewels.findMany();
   console.log(jewels);

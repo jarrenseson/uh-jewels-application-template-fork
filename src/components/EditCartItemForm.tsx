@@ -26,43 +26,46 @@ const EditCartItemForm = ({ cartItem }: { cartItem: CartItems }) => {
   });
 
   return (
-    <Container className="py-3">
+    <Container className="py-4">
       <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center">
-            <h2>{cartItem.jewelName}</h2>
-          </Col>
-          <Card>
+        <Col xs={12} md={8} lg={6}>
+          <h2 className="text-center mb-4 text-primary">{cartItem.jewelName}</h2>
+          <Card className="shadow-sm border-0">
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <input type="hidden" {...register('id')} value={cartItem.id} />
                 <input type="hidden" {...register('jewelName')} value={cartItem.jewelName} />
-                <Form.Group>
-                  <Form.Label>Quantity</Form.Label>
-                  <input
+
+                <Form.Group className="mb-3">
+                  <Form.Label className="fw-bold">Quantity</Form.Label>
+                  <Form.Control
                     type="number"
                     {...register('quantity')}
                     defaultValue={cartItem.quantity}
-                    className={`form-control ${errors.quantity ? 'is-invalid' : ''}`}
+                    isInvalid={!!errors.quantity}
+                    placeholder="Enter quantity"
                   />
-                  <div className="invalid-feedback">{errors.quantity?.message}</div>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.quantity?.message}
+                  </Form.Control.Feedback>
                 </Form.Group>
+
                 <input type="hidden" {...register('owner')} value={cartItem.owner} />
                 <input type="hidden" {...register('pricePerUnit')} value={cartItem.pricePerUnit} />
-                <Form.Group className="form-group">
-                  <Row className="pt-3">
-                    <Col>
-                      <Button type="submit" variant="primary">
-                        Submit
-                      </Button>
-                    </Col>
-                    <Col>
-                      <Button type="button" onClick={() => reset()} variant="warning" className="float-right">
-                        Reset
-                      </Button>
-                    </Col>
-                  </Row>
-                </Form.Group>
+
+                <div className="d-flex justify-content-between mt-4">
+                  <Button type="submit" variant="primary" className="px-4">
+                    Save Changes
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() => reset()}
+                    variant="outline-secondary"
+                    className="px-4"
+                  >
+                    Reset
+                  </Button>
+                </div>
               </Form>
             </Card.Body>
           </Card>

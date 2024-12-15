@@ -23,7 +23,7 @@ const onSubmit = async (data: {
   country: string }) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
   await addShippingInfo(data);
-  swal('Success', 'Your shipping info has been added', 'success', {
+  swal('Your order has been placed!', 'Thank you for shopping UH Jewels', 'Enjoy', {
     timer: 2000,
   });
 };
